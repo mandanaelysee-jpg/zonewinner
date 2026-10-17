@@ -69,7 +69,7 @@ footer{background:var(--k);color:#999;padding:4px 18px 30px;font-size:14px}
 <div class="chips" id="pchips"></div>
 <a class="ban" data-ban="bw" href="https://bwredir.com/1tJU?p=%2Fregistration%2F" rel="sponsored noopener"><img alt="Betwinner : bonus jusqu’à 200 % sur le premier dépôt"></a>
 <div id="plist"></div>
-<p class="note">Le « favori des cotes » est le résultat que le bookmaker juge le plus probable. Ce n’est pas une garantie. Les cotes changent : vérifie-les avant de parier.</p>
+<p class="note">Pronostics rédigés par ZoneWinner. Aucun pronostic n’est sûr : ne mise que ce que tu peux perdre (1 à 3 % de ta bankroll). +18.</p>
 </section>
 
 <section id="scores" hidden>
@@ -146,8 +146,12 @@ function draw(){
  LG.forEach(function(l){c+='<button class="chip'+(F==l?' on':'')+'" data-f="'+l+'">'+l+'</button>'});
  $('pchips').innerHTML=c;
  var L=M.filter(function(m){return !F||m.l==F});
- $('plist').innerHTML=L.length?L.map(function(m){return '<div class="card">'+head(m)+odds(m)+(m.p?'<div class="pick">'+m.p+'</div>':'')+'<a class="btn" href="#bonus">Parier avec un bonus</a></div>'}).join(''):'<div class="card">Aucun match pour cette ligue aujourd’hui. Reviens demain.</div>';
- $('slist').innerHTML=!M.length?'<div class="card">Aucun match chargé pour le moment.</div>':M.map(function(m){return '<div class="card">'+head(m)+odds(m)+'<a class="btn" href="#pronos" data-go="'+m.l+'">Pronostic ›</a></div>'}).join('');
+var P=L.filter(function(m){return m.k}),O=L.filter(function(m){return !m.k});
+ var h=P.map(function(m){var k=m.k;return '<div class="card">'+head(m)+odds(m)+'<div class="pick"><b>Pronostic ZoneWinner :</b> '+esc(k.p)+(k.c?' · cote '+esc(k.c):'')+(k.r?'<br><span class="note">'+esc(k.r)+'</span>':'')+'</div><a class="btn" href="#bonus">Parier avec un bonus</a></div>'}).join('');
+ if(!P.length&&L.length)h+='<div class="card">Les pronostics du jour arrivent bientôt. Reviens plus tard.</div>';
+ if(O.length)h+='<h2 style="font-size:22px;margin:22px 0 10px">Autres matchs du jour</h2>'+O.map(function(m){return '<div class="card">'+head(m)+'</div>'}).join('');
+ $('plist').innerHTML=L.length?h:'<div class="card">Aucun match pour cette ligue aujourd’hui. Reviens demain.</div>';
+ $('slist').innerHTML=!M.length?'<div class="card">Aucun match chargé pour le moment.</div>':M.map(function(m){return '<div class="card">'+head(m)+odds(m)+(m.k?'<a class="btn" href="#pronos" data-go="'+m.l+'">Pronostic ›</a>':'')+'</div>'}).join('');
 }
 $('lgrid').innerHTML=LG.map(function(l){return '<button data-l="'+l+'">'+l+'</button>'}).join('');
 document.addEventListener('click',function(e){
@@ -166,7 +170,18 @@ function go(){
 }
 document.querySelectorAll("[data-ban]").forEach(function(a){a.firstChild.src=$("bw").src});
 window.addEventListener("hashchange",go);
-fetch('/api/matches').then(function(r){return r.json()}).then(function(d){M=d.matches||[];if(d.date)DATE=new Date(d.date+'T12:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});draw()}).catch(function(){});
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function nm(t){return String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"")}
+function same(a,b){a=nm(a);b=nm(b);return a&&b&&(a==b||a.indexOf(b)>=0||b.indexOf(a)>=0)}
+fetch('/api/matches').then(function(r){return r.json()}).then(function(d){
+ M=d.matches||[];
+ if(d.date)DATE=new Date(d.date+'T12:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});
+ return fetch('/picks.json?'+Date.now()).then(function(r){return r.json()}).catch(function(){return null}).then(function(pk){
+  if(pk&&pk.date===d.date&&pk.picks)pk.picks.forEach(function(k){M.forEach(function(m){if(!m.k&&same(m.h,k.h)&&same(m.a,k.a))m.k=k})});
+  M.sort(function(a,b){return (b.k?1:0)-(a.k?1:0)});
+  draw();
+ });
+}).catch(function(){});
 draw();go();
 </script>
 </body>
