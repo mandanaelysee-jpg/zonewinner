@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-18",
+  "picks": [
+    {
+      "l": "Premier League",
+      "t": "14:00",
+      "h": "Bournemouth",
+      "a": "Sunderland",
+      "p": "Double chance : Bournemouth ou nul",
+      "s": "2-1",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 2-1 · Confiance : ⭐⭐⭐. Bournemouth est favori à domicile (environ 45 %), mais le nul pèse 28 %."
+    },
+    {
+      "l": "Premier League",
+      "t": "14:00",
+      "h": "Brighton",
+      "a": "Crystal Palace",
+      "p": "Brighton gagne",
+      "s": "2-0",
+      "e": "⭐⭐⭐⭐",
+      "r": "Score probable : 2-0 · Confiance : ⭐⭐⭐⭐. Brighton est nettement favori (environ 66 %). Crystal Palace vient de battre Nottingham Forest 3-1, donc il peut marquer."
+    },
+    {
+      "l": "Premier League",
+      "t": "14:00",
+      "h": "Leeds",
+      "a": "Manchester United",
+      "p": "Double chance : Leeds ou nul",
+      "s": "1-1",
+      "e": "⭐⭐",
+      "r": "Score probable : 1-1 · Confiance : ⭐⭐. Match très équilibré (Leeds 39 %, United 34 %, nul 28 %). United sort d'un 1-1 contre Tottenham. Pronostic à faible confiance."
+    },
+    {
+      "l": "Premier League",
+      "t": "16:30",
+      "h": "Nottingham Forest",
+      "a": "Arsenal",
+      "p": "Arsenal gagne",
+      "s": "0-2",
+      "e": "⭐⭐⭐⭐",
+      "r": "Score probable : 0-2 · Confiance : ⭐⭐⭐⭐. Arsenal est favori (environ 62 %). Nottingham Forest vient de perdre 3-1 à Crystal Palace."
+    },
+    {
+      "l": "La Liga",
+      "t": "13:00",
+      "h": "Osasuna",
+      "a": "Racing Santander",
+      "p": "Double chance : Osasuna ou nul",
+      "s": "1-1",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-1 · Confiance : ⭐⭐⭐. Osasuna est favori à domicile (environ 47 %), mais a perdu 5-2 au Betis. Racing a fait 2-2 contre Valence."
+    },
+    {
+      "l": "La Liga",
+      "t": "15:15",
+      "h": "Celta",
+      "a": "Alaves",
+      "p": "Double chance : Celta ou nul",
+      "s": "1-0",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-0 · Confiance : ⭐⭐⭐. Celta est légèrement favori (environ 42 %) après un 0-0 à Elche. Le nul est possible (30 %)."
+    },
+    {
+      "l": "La Liga",
+      "t": "17:30",
+      "h": "Malaga",
+      "a": "Real Sociedad",
+      "p": "Double chance : Real Sociedad ou nul",
+      "s": "1-2",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-2 · Confiance : ⭐⭐⭐. La Real Sociedad est favorite (environ 44 %) après sa victoire 3-2 contre La Corogne."
+    },
+    {
+      "l": "La Liga",
+      "t": "20:00",
+      "h": "Real Madrid",
+      "a": "Sevilla",
+      "p": "Real Madrid gagne",
+      "s": "3-0",
+      "e": "⭐⭐⭐⭐⭐",
+      "r": "Score probable : 3-0 · Confiance : ⭐⭐⭐⭐⭐. Real Madrid est un très gros favori à domicile (environ 78 %). Sevilla sort d'un 3-3 contre Levante."
+    },
+    {
+      "l": "Serie A",
+      "t": "11:30",
+      "h": "Udinese",
+      "a": "Lecce",
+      "p": "Double chance : Udinese ou nul",
+      "s": "1-0",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-0 · Confiance : ⭐⭐⭐. Udinese est favori à domicile (environ 53 %), mais a perdu 2-1 à Torino. Lecce a perdu 2-1 contre Bologne."
+    },
+    {
+      "l": "Serie A",
+      "t": "14:00",
+      "h": "Fiorentina",
+      "a": "Como",
+      "p": "Double chance : Como ou nul",
+      "s": "1-1",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-1 · Confiance : ⭐⭐⭐. Como est favori à l'extérieur (environ 46 %). La Fiorentina n'est qu'à 28 %."
+    },
+    {
+      "l": "Serie A",
+      "t": "17:00",
+      "h": "AC Milan",
+      "a": "Atalanta",
+      "p": "Double chance : Milan ou nul",
+      "s": "2-1",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 2-1 · Confiance : ⭐⭐⭐. Milan est favori (environ 55 %) malgré un 1-1 à Sassuolo. Atalanta vient de battre Venise 3-1."
+    },
+    {
+      "l": "Serie A",
+      "t": "19:45",
+      "h": "Juventus",
+      "a": "Lazio",
+      "p": "Juventus gagne",
+      "s": "2-1",
+      "e": "⭐⭐⭐⭐",
+      "r": "Score probable : 2-1 · Confiance : ⭐⭐⭐⭐. La Juventus est favorite à domicile (environ 61 %). Elle a fait 1-1 à Cagliari, et Lazio vient de battre Monza 3-1."
+    },
+    {
+      "l": "Bundesliga",
+      "t": "14:30",
+      "h": "Leverkusen",
+      "a": "Freiburg",
+      "p": "Leverkusen gagne",
+      "s": "2-1",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 2-1 · Confiance : ⭐⭐⭐. Leverkusen est favori (environ 60 %). Freiburg a battu Schalke 2-1 il y a une semaine : match disputé possible."
+    },
+    {
+      "l": "Bundesliga",
+      "t": "16:30",
+      "h": "Gladbach",
+      "a": "Hoffenheim",
+      "p": "Double chance : Hoffenheim ou nul",
+      "s": "1-2",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-2 · Confiance : ⭐⭐⭐. Hoffenheim est favori à l'extérieur (environ 46 %). Gladbach vient de perdre 2-1 à Cologne."
+    },
+    {
+      "l": "Ligue 1",
+      "t": "14:00",
+      "h": "Angers",
+      "a": "Marseille",
+      "p": "Double chance : Marseille ou nul",
+      "s": "1-2",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-2 · Confiance : ⭐⭐⭐. Marseille est favori à l'extérieur (environ 48 %) après son 2-0 à Troyes."
+    },
+    {
+      "l": "Ligue 1",
+      "t": "16:15",
+      "h": "Le Havre",
+      "a": "Auxerre",
+      "p": "Double chance : Le Havre ou nul",
+      "s": "1-1",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-1 · Confiance : ⭐⭐⭐. Le Havre est légèrement favori (environ 42 %). Auxerre a perdu 4-1 à Rennes."
+    },
+    {
+      "l": "Ligue 1",
+      "t": "16:15",
+      "h": "Lorient",
+      "a": "Monaco",
+      "p": "Double chance : Monaco ou nul",
+      "s": "1-2",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 1-2 · Confiance : ⭐⭐⭐. Monaco est favori (environ 46 %), mais Lorient vient de gagner 1-0 contre Paris FC."
+    },
+    {
+      "l": "Ligue 1",
+      "t": "16:15",
+      "h": "Paris FC",
+      "a": "Rennes",
+      "p": "Double chance : Paris FC ou nul",
+      "s": "1-1",
+      "e": "⭐⭐",
+      "r": "Score probable : 1-1 · Confiance : ⭐⭐. Paris FC est favori à domicile (environ 45 %), mais Rennes vient de battre Auxerre 4-1. Pronostic à faible confiance."
+    },
+    {
+      "l": "Ligue 1",
+      "t": "19:45",
+      "h": "Lyon",
+      "a": "Nice",
+      "p": "Double chance : Lyon ou nul",
+      "s": "2-1",
+      "e": "⭐⭐⭐",
+      "r": "Score probable : 2-1 · Confiance : ⭐⭐⭐. Lyon est favori à domicile (environ 50 %). Nice vient de battre Strasbourg 2-1."
+    }
+  ]
+}
