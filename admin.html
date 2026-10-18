@@ -21,7 +21,7 @@
 <div class="field"><label for="competition">Compétition *</label><input id="competition" required maxlength="120" value="Football"></div>
 <div class="field"><label for="prediction">Pronostic *</label><input id="prediction" required maxlength="180" placeholder="Ex. Victoire équipe à domicile"></div>
 <div class="field"><label for="odds">Cote (facultatif)</label><input id="odds" type="number" min="1" max="9999" step="0.01" placeholder="1.85"></div>
-<div class="field"><label for="kickoff">Date et heure du match</label><input id="kickoff" type="datetime-local"></div>
+<div class="field"><label for="kickoff">Date et heure du match</label><div class="actions" style="justify-content:flex-start"><input id="kickoff" type="datetime-local" style="flex:1;min-width:0"><button id="openKickoff" class="btn secondary" type="button">Choisir</button></div><p class="muted small">Appuie sur « Choisir » si le calendrier ne s’ouvre pas en touchant le champ.</p></div>
 <div class="field"><label for="status">Statut</label><select id="status"><option value="pending">En attente</option><option value="won">Gagné</option><option value="lost">Perdu</option><option value="void">Annulé</option></select></div>
 <div class="field"><label for="result">Résultat / note (facultatif)</label><input id="result" maxlength="180" placeholder="Ex. Score final"></div>
 <div class="field full"><label><input id="published" type="checkbox" style="width:auto;margin-right:8px">Publier immédiatement dans l'espace membre</label></div>
@@ -49,6 +49,7 @@ const statusLabel=s=>({pending:'En attente',won:'Gagné',lost:'Perdu',void:'Annu
 const fmt=v=>{if(!v)return 'Date à confirmer';const d=new Date(v);return Number.isNaN(d.getTime())?'Date à confirmer':d.toLocaleString('fr-FR',{dateStyle:'medium',timeStyle:'short'});};
 function resetForm(){form.reset();$('pickId').value='';$('competition').value='Football';$('status').value='pending';$('formTitle').textContent='Ajouter un pronostic';$('save').textContent='Enregistrer le pronostic';$('cancelEdit').classList.add('hidden');formMessage.textContent='';}
 $('reset').addEventListener('click',resetForm);$('cancelEdit').addEventListener('click',resetForm);
+$('openKickoff').addEventListener('click',()=>{const input=$('kickoff');try{if(typeof input.showPicker==='function'){input.showPicker();return;}}catch(e){}input.focus();input.click();});
 form.addEventListener('submit',async e=>{e.preventDefault();$('save').disabled=true;formMessage.className='status';formMessage.textContent='Enregistrement…';
 const id=$('pickId').value, kickoff=$('kickoff').value;
 const row={match_name:$('match').value.trim(),title:$('match').value.trim(),competition:$('competition').value.trim(),prediction:$('prediction').value.trim(),odds:$('odds').value?Number($('odds').value):null,kickoff_at:kickoff?new Date(kickoff).toISOString():null,status:$('status').value,result:$('result').value.trim()||null,published:$('published').checked};
