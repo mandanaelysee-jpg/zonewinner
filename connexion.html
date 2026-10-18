@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Connexion — ZoneWinner</title>
+<style>
+:root{color-scheme:dark;--bg:#0a0a0a;--panel:#171717;--gold:#f5ff00;--text:#f5f5f5;--muted:#b7b7b7;--line:#383838}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#173321 0,#0a0a0a 55%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Arial,sans-serif;display:grid;place-items:center;padding:22px}
+main{width:min(100%,460px)}a{color:var(--gold)}.brand{font-weight:900;font-size:30px;text-decoration:none;color:white}.brand span{color:var(--gold)}h1{font-size:28px;margin:20px 0 4px}.muted{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:18px;box-shadow:0 18px 60px #0006}
+label{display:block;font-weight:650;margin:14px 0 6px}input{width:100%;border:1px solid #555;background:#0d0d0d;color:white;border-radius:10px;padding:13px;font:inherit}input:focus{outline:2px solid var(--gold);outline-offset:2px}.btn{width:100%;margin-top:18px;border:0;border-radius:10px;background:var(--gold);color:#080808;font:inherit;font-weight:850;padding:13px;cursor:pointer}.secondary{background:#292929;color:white;border:1px solid #555}.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px;font-size:14px}.status{min-height:24px;margin:12px 0 0;color:#f5ff00}.hide{display:none!important}.captcha{margin-top:16px;min-height:65px;overflow:hidden}.small{font-size:13px}.back{display:inline-block;margin-top:18px;text-decoration:none}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+<script src="auth-config.js"></script>
+</head>
+<body>
+<main>
+<a class="brand" href="index.html">Zone<span>Winner</span></a>
+<h1 id="heading">Connexion à ton espace</h1>
+<p class="muted">Retrouve ton espace ZoneWinner en toute sécurité.</p>
+<div class="panel">
+<div id="modeTabs" class="links" aria-label="Choisir une action">
+<a href="#login" id="loginTab">Connexion</a><a href="#signup" id="signupTab">Créer un compte</a><a href="#reset" id="resetTab">Mot de passe oublié ?</a>
+</div>
+<form id="authForm">
+<div id="emailWrap"><label for="email">Adresse e-mail</label><input id="email" type="email" autocomplete="email" required maxlength="254></div>
+<div id="passwordWrap"><label for="password">Mot de passe</label><input id="password" type="password" autocomplete="current-password" minlength="10" maxlength="128"></div>
+<div id="captcha" class="captcha" aria-label="Vérification anti-robot"></div>
+<button id="submit" class="btn" type="submit">Se connecter</button>
+</form>
+<p id="status" class="status" role="status" aria-live="polite"></p>
+<p class="muted small">La vérification anti-robot est requise. Ne partage jamais ton mot de passe.</p>
+</div>
+<a class="back" href="index.html">← Retour au site</a>
+</main>
+<script>
+(() => {
+  const cfg = window.ZW_AUTH_CONFIG || {};
+  const status = document.getElementById('status');
+  const form = document.getElementById('authForm');
+  const password = document.getElementById('password');
+  const passwordWrap = document.getElementById('passwordWrap');
+  const email = document.getElementById('email');
+  const submit = document.getElementById('submit');
+  const heading = document.getElementById('heading');
+  let mode = 'login', captchaToken = '', widgetId = null;
+  let client = null;
+
+  function message(text) { status.textContent = text; }
+  function setMode(next) {
+    mode = next;
+    const reset = mode === 'reset';
+    passwordWrap.classList.toggle('hide', reset);
+    password.required = !reset;
+    password.autocomplete = mode === 'signup' ? 'new-password' : 'current-password';
+    submit.textContent = mode === 'login' ? 'Se connecter' : mode === 'signup' ? 'Créer mon compte' : 'Réinitialiser le mot de passe';
+    heading.textContent = mode === 'login' ? 'Connexion à ton espace' : mode === 'signup' ? 'Créer ton compte ZoneWinner' : 'Réinitialiser le mot de passe';
+    message('');
+    document.querySelectorAll('#modeTabs a').forEach(a => a.setAttribute('aria-current', a.id === mode + 'Tab' ? 'page' : 'false'));
+    resetCaptcha();
+  }
+  function resetCaptcha() {
+    captchaToken = '';
+    if (window.turnstile && widgetId !== null) window.turnstile.reset(widgetId);
+  }
+  function initCaptcha() {
+    if (!window.turnstile || widgetId !== null) return;
+    if (!cfg.turnstileSiteKey || cfg.turnstileSiteKey.startsWith('REMPLACER_')) {
+      message('Configuration à terminer : renseigne la clé publique Turnstile dans auth-config.js.');
+      return;
+    }
+    widgetId = window.turnstile.render('#captcha', {
+      sitekey: cfg.turnstileSiteKey,
+      callback: token => { captchaToken = token; message('Vérification anti-robot validée.'); },
+      'expired-callback': () => { captchaToken = ''; message('La vérification a expiré. Recommence.'); },
+      'error-callback': () => { captchaToken = ''; message('La vérification anti-robot a échoué. Réessaie.'); }
+    });
+  }
+  document.getElementById('loginTab').addEventListener('click', e => { e.preventDefault(); setMode('login'); });
+  document.getElementById('signupTab').addEventListener('click', e => { e.preventDefault(); setMode('signup'); });
+  document.getElementById('resetTab').addEventListener('click', e => { e.preventDefault(); setMode('reset'); });
+
+  window.addEventListener('load', () => {
+    if (!window.supabase || !cfg.supabaseUrl || !cfg.supabasePublishableKey ||
+        cfg.supabaseUrl.startsWith('REMPLACER_') || cfg.supabasePublishableKey.startsWith('REMPLACER_')) {
+      message('Configuration à terminer : renseigne les paramètres Supabase dans auth-config.js.');
+      submit.disabled = true;
+      return;
+    }
+    client = window.supabase.createClient(cfg.supabaseUrl, cfg.supabasePublishableKey);
+    initCaptcha();
+  });
+  const captchaWait = window.setInterval(() => { initCaptcha(); if (widgetId !== null) window.clearInterval(captchaWait); }, 300);
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!client) return message('Le service de connexion n’est pas encore configuré.');
+    if (!captchaToken) return message('Valide d’abord la vérification anti-robot.');
+    submit.disabled = true;
+    message('Traitement en cours…');
+    try {
+      let result;
+      if (mode === 'login') {
+        result = await client.auth.signInWithPassword({ email: email.value.trim(), password: password.value, options: { captchaToken } });
+        if (!result.error) location.assign('espace-membre.html');
+      } else if (mode === 'signup') {
+        result = await client.auth.signUp({
+          email: email.value.trim(),
+          password: password.value,
+          options: { captchaToken, emailRedirectTo: location.origin + '/espace-membre.html' }
+        });
+        if (!result.error) message('Compte créé. Vérifie ta boîte e-mail pour confirmer ton adresse avant de te connecter.');
+      } else {
+        result = await client.auth.resetPasswordForEmail(email.value.trim(), {
+          redirectTo: location.origin + '/reinitialiser-mot-de-passe.html',
+          captchaToken
+        });
+        if (!result.error) message('Si cette adresse correspond à un compte, un e-mail de réinitialisation sera envoyé.');
+      }
+      if (result && result.error) message('Impossible de terminer cette action. Vérifie les informations et réessaie.');
+    } catch (_) {
+      message('Une erreur est survenue. Réessaie dans quelques instants.');
+    } finally {
+      resetCaptcha();
+      submit.disabled = false;
+    }
+  });
+  setMode('login');
+})();
+</script>
+</body>
+</html>
