@@ -53,7 +53,8 @@ export default async () => {
     await store.setJSON("v2", data);
     return out(data);
   } catch (e) {
-    return cached ? out(cached) : Response.json({ error: String(e) }, { status: 502 });
+    console.error("matches function failed:", e);
+    return cached ? out(cached) : Response.json({ error: "Impossible de récupérer les matchs pour le moment." }, { status: 502 });
   }
 };
 
