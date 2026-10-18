@@ -14,7 +14,8 @@ Cette fonctionnalité est volontairement **désactivée tant que l’administrat
 3. Dans Supabase > Edge Functions > Secrets, définir :
    - `API_FOOTBALL_KEY` : clé API-Football privée.
    - `ZONEWINNER_CRON_SECRET` : secret aléatoire long, à garder privé.
-   - `SUPABASE_URL` et `SUPABASE_SERVICE_ROLE_KEY` : valeurs serveur du projet Supabase. Ne jamais les mettre dans `auth-config.js`, GitHub ou le navigateur.
+   - `PROJECT_URL` : URL du projet Supabase (par exemple `https://<project-ref>.supabase.co`).
+   - `PROJECT_SERVICE_ROLE_KEY` : clé serveur du projet Supabase. Supabase réserve le préfixe `SUPABASE_` pour ses propres variables ; la fonction lit donc ces noms personnalisés. Ne jamais les mettre dans `auth-config.js`, GitHub ou le navigateur.
 4. Tester manuellement la fonction avec une requête POST et l'en-tête `x-zonewinner-cron-secret`. La réponse indique `checked`, `settled`, `review`, `waiting` et `errors`.
 5. Seulement après validation des tests, configurer Supabase Cron / pg_cron pour appeler la fonction à intervalles réguliers, par exemple toutes les 30 minutes. Conserver la clé API et le secret uniquement côté serveur.
 
