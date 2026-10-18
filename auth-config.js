@@ -2,6 +2,6 @@
 // Ne place JAMAIS la clé secrète Cloudflare ni une clé Supabase service_role ici.
 window.ZW_AUTH_CONFIG = {
   supabaseUrl: "https://cuwoxrsovdbknjtwvzez.supabase.co",
-  supabasePublishableKey: "REMPLACER_PAR_CLE_PUBLIQUE_SUPABASE",
+  supabasePublishableKey: "sb_publishable_mGuaWkWAd5dTu8DfAw-Z1g_6UJfeBpM",
   turnstileSiteKey: "0x4AAAAAAFaBScUvjMEVUrKU"
 };
