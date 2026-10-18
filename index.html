@@ -60,7 +60,7 @@ footer{background:var(--k);color:#999;padding:4px 18px 30px;font-size:14px}
 <header>
 <a class="logo" href="#pronos">Zone<i>Winner</i></a>
 <nav id="tabs" aria-label="Navigation">
-<a href="#pronos">Pronostics</a><a href="#scores">Scores</a><a href="#ligues">Ligues</a><a href="#bonus">Bonus</a><a href="#sites">Sites de paris</a><a href="#guides">Guides</a><a href="#contact">Contact</a>
+<a href="#pronos">Pronostics</a><a href="#scores">Scores</a><a href="#ligues">Ligues</a><a href="#bonus">Bonus</a><a href="#sites">Sites de paris</a><a href="#guides">Guides</a><a href="#contact">Contact</a><a href="connexion.html">Espace membre</a>
 </nav>
 </header>
 <main>
@@ -141,8 +141,8 @@ var M=[];
 var LG=["Premier League","La Liga","Ligue 1","Serie A","Bundesliga","Ligue des champions"];
 var F="";
 function $(i){return document.getElementById(i)}
-function odds(m){if(!m.o)return '';return '<div class="odds"><div>1<b>'+m.o[0].toFixed(2)+'</b></div><div>X<b>'+m.o[1].toFixed(2)+'</b></div><div>2<b>'+m.o[2].toFixed(2)+'</b></div></div>'}
-function head(m){return '<span class="lg">'+m.l+'</span> <span class="note">'+DATE+', '+m.t+'</span><div class="teams">'+m.h+' – '+m.a+'</div>'}
+function odds(m){if(!Array.isArray(m.o)||m.o.length!==3||!m.o.every(function(x){return typeof x==='number'&&Number.isFinite(x)&&x>0}))return '';return '<div class="odds"><div>1<b>'+m.o[0].toFixed(2)+'</b></div><div>X<b>'+m.o[1].toFixed(2)+'</b></div><div>2<b>'+m.o[2].toFixed(2)+'</b></div></div>'}
+function head(m){return '<span class="lg">'+esc(m.l)+'</span> <span class="note">'+esc(DATE)+', '+esc(m.t)+'</span><div class="teams">'+esc(m.h)+' – '+esc(m.a)+'</div>'}
 function draw(){
  var c='<button class="chip'+(F?'':' on')+'" data-f="">Tous</button>';
  LG.forEach(function(l){c+='<button class="chip'+(F==l?' on':'')+'" data-f="'+l+'">'+l+'</button>'});

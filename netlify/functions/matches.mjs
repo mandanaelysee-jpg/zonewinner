@@ -7,7 +7,7 @@ const API = "https://v3.football.api-sports.io";
 const TZ = "Africa/Douala";
 
 async function api(path, key) {
-  const r = await fetch(API + path, { headers: { "x-apisports-key": key } });
+  const r = await fetch(API + path, { headers: { "x-apisports-key": key }, signal: AbortSignal.timeout(10000) });
   if (!r.ok) throw new Error("API-Football " + r.status);
   const j = await r.json();
   const e = j.errors && (Array.isArray(j.errors) ? j.errors[0] : Object.values(j.errors)[0]);
@@ -53,7 +53,8 @@ export default async () => {
     await store.setJSON("v2", data);
     return out(data);
   } catch (e) {
-    return cached ? out(cached) : Response.json({ error: String(e) }, { status: 502 });
+    console.error("matches function failed:", e);
+    return cached ? out(cached) : Response.json({ error: "Impossible de récupérer les matchs pour le moment." }, { status: 502 });
   }
 };
 

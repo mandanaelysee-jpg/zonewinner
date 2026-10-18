@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Nouveau mot de passe — ZoneWinner</title>
+<style>
+:root{--gold:#f5ff00;--bg:#0a0a0a;--panel:#171717;--line:#383838;--text:#f5f5f5;--muted:#bbb}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#173321,#0a0a0a 55%);color:var(--text);font:16px/1.5 system-ui,Arial,sans-serif;display:grid;place-items:center;padding:22px}main{width:min(100%,460px)}.brand{font-size:30px;font-weight:900;color:white;text-decoration:none}.brand span{color:var(--gold)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:20px}label{display:block;margin:14px 0 6px;font-weight:700}input{width:100%;border:1px solid #555;background:#0d0d0d;color:white;border-radius:10px;padding:13px;font:inherit}.btn{width:100%;margin-top:18px;border:0;border-radius:10px;background:var(--gold);color:#080808;font:inherit;font-weight:850;padding:13px;cursor:pointer}.muted{color:var(--muted)}.status{min-height:24px;color:var(--gold)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="auth-config.js"></script></head>
+<body><main><a class="brand" href="index.html">Zone<span>Winner</span></a><section class="panel">
+<h1>Choisir un nouveau mot de passe</h1><p class="muted">Ouvre cette page depuis le lien reçu par e-mail.</p>
+<form id="form"><label for="password">Nouveau mot de passe</label><input id="password" type="password" autocomplete="new-password" minlength="10" maxlength="128" required><label for="confirm">Confirmer le mot de passe</label><input id="confirm" type="password" autocomplete="new-password" minlength="10" maxlength="128" required><button class="btn" id="submit" type="submit">Mettre à jour</button></form>
+<p id="status" class="status" role="status" aria-live="polite"></p><a href="connexion.html">Retour à la connexion</a>
+</section></main>
+<script>
+(async () => {
+ const cfg = window.ZW_AUTH_CONFIG || {};
+ const status = document.getElementById('status');
+ const form = document.getElementById('form');
+ const submit = document.getElementById('submit');
+ if (!window.supabase || !cfg.supabaseUrl || !cfg.supabasePublishableKey || cfg.supabaseUrl.startsWith('REMPLACER_') || cfg.supabasePublishableKey.startsWith('REMPLACER_')) {
+   status.textContent = 'La configuration Supabase doit être terminée.'; submit.disabled = true; return;
+ }
+ const client = window.supabase.createClient(cfg.supabaseUrl, cfg.supabasePublishableKey);
+ const { data } = await client.auth.getSession();
+ if (!data.session) status.textContent = 'Si le lien ne fonctionne pas, demande une nouvelle réinitialisation depuis la page de connexion.';
+ form.addEventListener('submit', async e => {
+   e.preventDefault();
+   const password = document.getElementById('password').value;
+   const confirm = document.getElementById('confirm').value;
+   if (password !== confirm) { status.textContent = 'Les deux mots de passe ne correspondent pas.'; return; }
+   if (password.length < 10) { status.textContent = 'Choisis un mot de passe de 10 caractères minimum.'; return; }
+   submit.disabled = true; status.textContent = 'Mise à jour en cours…';
+   const { error } = await client.auth.updateUser({ password });
+   if (error) status.textContent = 'Impossible de modifier le mot de passe. Ouvre un lien de réinitialisation récent et réessaie.';
+   else { status.textContent = 'Mot de passe modifié. Tu peux maintenant te connecter.'; form.reset(); }
+   submit.disabled = false;
+ });
+})();
+</script></body></html>
