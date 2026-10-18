@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mon espace — ZoneWinner</title>
+<style>
+:root{--gold:#f5ff00;--bg:#0a0a0a;--panel:#171717;--line:#383838;--text:#f5f5f5;--muted:#bbb}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#173321,#0a0a0a 55%);color:var(--text);font:16px/1.5 system-ui,Arial,sans-serif;padding:24px}main{max-width:800px;margin:0 auto}.brand{font-size:28px;font-weight:900;color:white;text-decoration:none}.brand span{color:var(--gold)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:24px}.muted{color:var(--muted)}.btn{border:0;border-radius:10px;background:var(--gold);color:#080808;font:inherit;font-weight:800;padding:12px 16px;cursor:pointer}.error{color:var(--gold);min-height:24px}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="auth-config.js"></script>
+</head>
+<body><main>
+<a class="brand" href="index.html">Zone<span>Winner</span></a>
+<section class="panel">
+<h1>Mon espace membre</h1><p id="status" class="muted">Vérification de ta session…</p>
+<div id="content" hidden><p>Tu es connecté avec : <strong id="email"></strong></p><p class="muted">Bienvenue dans ton espace ZoneWinner. Les fonctionnalités membres seront ajoutées ici.</p><button class="btn" id="logout" type="button">Se déconnecter</button></div>
+<p id="error" class="error" role="status"></p>
+</section></main>
+<script>
+(async () => {
+ const cfg = window.ZW_AUTH_CONFIG || {};
+ const status = document.getElementById('status');
+ const error = document.getElementById('error');
+ if (!window.supabase || !cfg.supabaseUrl || !cfg.supabasePublishableKey || cfg.supabaseUrl.startsWith('REMPLACER_') || cfg.supabasePublishableKey.startsWith('REMPLACER_')) {
+   status.textContent = 'La configuration de l’espace membre reste à terminer.'; return;
+ }
+ const client = window.supabase.createClient(cfg.supabaseUrl, cfg.supabasePublishableKey);
+ const { data, error: authError } = await client.auth.getUser();
+ if (authError || !data.user) { location.replace('connexion.html'); return; }
+ document.getElementById('email').textContent = data.user.email || 'Compte ZoneWinner';
+ document.getElementById('content').hidden = false;
+ status.textContent = 'Connexion sécurisée active.';
+ document.getElementById('logout').addEventListener('click', async () => {
+   const { error: signOutError } = await client.auth.signOut();
+   if (signOutError) { error.textContent = 'Déconnexion impossible pour le moment.'; return; }
+   location.replace('connexion.html');
+ });
+})();
+</script>
+</body></html>
