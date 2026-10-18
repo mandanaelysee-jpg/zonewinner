@@ -15,8 +15,8 @@
 6. Dans Authentication / Bot and Abuse Protection, active CAPTCHA et choisis Cloudflare Turnstile.
 
 ## Étape 2 — Cloudflare Turnstile
-1. Crée un widget Turnstile sur https://dash.cloudflare.com/ et autorise le domaine de production de ZoneWinner.
-2. Copie la **site key publique** dans `auth-config.js`.
+1. Crée un widget Turnstile sur https://dash.cloudflare.com/ et ajoute le hostname `zonewinner-cm.netlify.app` (sans `https://` ni chemin) dans Hostname Management. Si un autre domaine sert le site, ajoute aussi ce hostname.
+2. La Site Key publique est déjà renseignée dans `auth-config.js` sur la branche `security-hardening`. Vérifie dans Cloudflare que le widget autorise bien `zonewinner-cm.netlify.app`.
 3. Copie la **secret key** uniquement dans les paramètres CAPTCHA du tableau de bord Supabase. Ne la mets jamais dans GitHub ni dans `auth-config.js`.
 
 ## Étape 3 — Déploiement et tests
