@@ -1,131 +1,27 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-18",
+  "fuseau": "WAT",
   "picks": [
-    {
-      "h": "Everton",
-      "a": "Chelsea",
-      "p": "Double chance : Chelsea ou nul",
-      "r": "Chelsea est légèrement favori (environ 43 % contre 32 % pour Everton) après son 5-1 contre Bournemouth. Everton a fait 2-2 à Hull : match ouvert, d'où la double chance."
-    },
-    {
-      "h": "Brentford",
-      "a": "Liverpool",
-      "p": "Double chance : Brentford ou nul",
-      "r": "Match très équilibré (Brentford 39 %, Liverpool 35 %, nul 26 %). Liverpool vient de perdre 3-0 contre City et Brentford a tenu Aston Villa 2-2. Pronostic à faible confiance."
-    },
-    {
-      "h": "Fulham",
-      "a": "Hull City",
-      "p": "Double chance : Fulham ou nul",
-      "r": "Fulham est favori (environ 59 %) malgré sa défaite 2-1 à Ipswich. Hull sort d'un 2-2 contre Everton, mais joue à l'extérieur."
-    },
-    {
-      "h": "Manchester City",
-      "a": "Ipswich",
-      "p": "Manchester City gagne",
-      "r": "City est le grand favori (environ 78 % de chances de victoire). Il vient de battre Liverpool 3-0, alors qu'Ipswich sort d'une victoire 2-1 contre Fulham."
-    },
-    {
-      "h": "Newcastle",
-      "a": "Aston Villa",
-      "p": "Double chance : Newcastle ou nul",
-      "r": "Newcastle est favori à domicile (environ 42 %) mais vient de perdre 4-1 à Coventry. Aston Villa a fait 2-2 contre Brentford. Pronostic à faible confiance."
-    },
-    {
-      "h": "Espanyol",
-      "a": "Atletico Madrid",
-      "p": "Double chance : Atlético ou nul",
-      "r": "L'Atlético est favori (environ 58 %) et a gagné 2-1 à Alavés. Espanyol sort d'un nul 1-1 à Malaga."
-    },
-    {
-      "h": "Villarreal",
-      "a": "Elche",
-      "p": "Villarreal gagne",
-      "r": "Villarreal est nettement favori à domicile (environ 68 %), même après sa défaite 1-0 au Real Madrid. Elche a fait 0-0 contre le Celta."
-    },
-    {
-      "h": "Real Betis",
-      "a": "Barcelona",
-      "p": "Double chance : Barcelone ou nul",
-      "r": "Barcelone est favori (environ 66 %) après son 3-0 contre Getafe. Le Betis vient de gagner 5-2 contre Osasuna, d'où la double chance."
-    },
-    {
-      "h": "Valencia",
-      "a": "Athletic Club",
-      "p": "Double chance : Athletic Club ou nul",
-      "r": "L'Athletic est légèrement favori (environ 41 %). Valencia a fait 2-2 à Racing Santander. Pronostic à faible confiance."
-    },
-    {
-      "h": "Venezia",
-      "a": "Napoli",
-      "p": "Napoli gagne",
-      "r": "Napoli est favori (environ 56 %) après son 3-0 contre Frosinone. Venezia vient de perdre 3-1 à Atalanta."
-    },
-    {
-      "h": "Bologna",
-      "a": "Inter",
-      "p": "Double chance : Inter ou nul",
-      "r": "L'Inter est nettement favori (environ 62 %) après son 3-0 contre Parme. Bologne a gagné 2-1 à Lecce."
-    },
-    {
-      "h": "AS Roma",
-      "a": "Genoa",
-      "p": "Double chance : Roma ou nul",
-      "r": "La Roma est favorite (environ 61 %), mais elle a fait 0-0 à Côme. La double chance limite le risque."
-    },
-    {
-      "h": "Union Berlin",
-      "a": "Borussia Dortmund",
-      "p": "Double chance : Dortmund ou nul",
-      "r": "Dortmund est donné favori (environ 62 %) mais il a fait 2-2 contre Brême à domicile. Union gagne à la maison sur des scores serrés (1-0 contre Elversberg), donc le nul reste possible."
-    },
-    {
-      "h": "Hamburger SV",
-      "a": "VfB Stuttgart",
-      "p": "Double chance : Stuttgart ou nul",
-      "r": "Stuttgart est favori (environ 53 %) après sa victoire 2-0 à Paderborn. Hambourg a gagné 3-2 à Hoffenheim : match ouvert."
-    },
-    {
-      "h": "Werder Bremen",
-      "a": "SC Paderborn 07",
-      "p": "Double chance : Brême ou nul",
-      "r": "Brême est favori (environ 54 %) et a tenu Dortmund 2-2. Paderborn a perdu 2-0 contre Stuttgart."
-    },
-    {
-      "h": "FC Schalke 04",
-      "a": "FSV Mainz 05",
-      "p": "Plus de 2,5 buts",
-      "r": "Pari plus risqué, basé seulement sur les scores récents : Schalke a perdu 2-1 à Fribourg et Mainz a perdu 4-3 contre Leverkusen. Aucun favori net (Mainz 41 %, Schalke 33 %)."
-    },
-    {
-      "h": "SV Elversberg",
-      "a": "FC Augsburg",
-      "p": "Double chance : Elversberg ou nul",
-      "r": "Match très équilibré (Elversberg 39 %, Augsburg 36 %). Augsburg a tenu le Bayern 2-2, Elversberg a perdu 1-0 à Union. Pronostic à faible confiance."
-    },
-    {
-      "h": "Bayern München",
-      "a": "RB Leipzig",
-      "p": "Double chance : Bayern ou nul",
-      "r": "Bayern est favori à domicile (environ 81 %), mais il a fait 2-2 à Augsburg et Leipzig arrive après un 6-0 contre Francfort. La double chance limite le risque."
-    },
-    {
-      "h": "Strasbourg",
-      "a": "Paris Saint Germain",
-      "p": "Paris Saint-Germain gagne",
-      "r": "Le PSG est favori (environ 69 %) après son 3-1 contre Le Mans. Strasbourg vient de perdre 2-1 à Nice."
-    },
-    {
-      "h": "Lille",
-      "a": "Stade Brestois 29",
-      "p": "Double chance : Lille ou nul",
-      "r": "Lille est favori à domicile (environ 48 %) après sa victoire 1-0 contre Le Havre. Brest arrive après un 5-1 contre Angers : match disputé."
-    },
-    {
-      "h": "Estac Troyes",
-      "a": "Lens",
-      "p": "Double chance : Lens ou nul",
-      "r": "Lens est favori (environ 51 %) après sa victoire 2-1 contre Lyon. Troyes a perdu 2-0 contre Marseille."
-    }
+    {"ligue": "Ligue 1", "heure": "14:00", "domicile": "Angers", "exterieur": "Marseille", "pari": "Victoire OM", "score": "1-2", "etoiles": 3},
+    {"ligue": "Ligue 1", "heure": "16:15", "domicile": "Le Havre", "exterieur": "Auxerre", "pari": "Le Havre ou nul", "score": "1-0", "etoiles": 2},
+    {"ligue": "Ligue 1", "heure": "16:15", "domicile": "Lorient", "exterieur": "Monaco", "pari": "Monaco ou nul", "score": "1-2", "etoiles": 3},
+    {"ligue": "Ligue 1", "heure": "16:15", "domicile": "Paris FC", "exterieur": "Rennes", "pari": "Paris FC ou nul", "score": "2-1", "etoiles": 2},
+    {"ligue": "Ligue 1", "heure": "19:45", "domicile": "Lyon", "exterieur": "Nice", "pari": "Victoire OL", "score": "2-0", "etoiles": 4},
+
+    {"ligue": "Premier League", "heure": "14:00", "domicile": "Bournemouth", "exterieur": "Sunderland", "pari": "Bournemouth ou nul", "score": "2-1", "etoiles": 3},
+    {"ligue": "Premier League", "heure": "14:00", "domicile": "Brighton", "exterieur": "Crystal Palace", "pari": "Victoire Brighton", "score": "2-0", "etoiles": 4},
+    {"ligue": "Premier League", "heure": "14:00", "domicile": "Leeds", "exterieur": "Manchester United", "pari": "Leeds ou nul", "score": "1-1", "etoiles": 2},
+    {"ligue": "Premier League", "heure": "16:30", "domicile": "Nottingham Forest", "exterieur": "Arsenal", "pari": "Victoire Arsenal", "score": "0-2", "etoiles": 4},
+
+    {"ligue": "La Liga", "heure": "13:00", "domicile": "Osasuna", "exterieur": "Racing Santander", "pari": "Victoire Osasuna", "score": "1-0", "etoiles": 3},
+    {"ligue": "La Liga", "heure": "15:15", "domicile": "Celta Vigo", "exterieur": "Alavés", "pari": "Celta ou nul", "score": "1-0", "etoiles": 2},
+    {"ligue": "La Liga", "heure": "17:30", "domicile": "Málaga", "exterieur": "Real Sociedad", "pari": "Sociedad ou nul", "score": "1-2", "etoiles": 2},
+    {"ligue": "La Liga", "heure": "20:00", "domicile": "Real Madrid", "exterieur": "Sevilla", "pari": "Victoire Real Madrid", "score": "3-0", "etoiles": 5},
+
+    {"ligue": "Eredivisie", "heure": "11:15", "domicile": "PEC Zwolle", "exterieur": "Go Ahead Eagles", "pari": "Go Ahead ou nul", "score": "1-2", "etoiles": 2},
+    {"ligue": "Eredivisie", "heure": "13:30", "domicile": "Cambuur", "exterieur": "AZ Alkmaar", "pari": "Victoire AZ", "score": "1-3", "etoiles": 3},
+    {"ligue": "Eredivisie", "heure": "15:45", "domicile": "Groningen", "exterieur": "Ajax", "pari": "Ajax ou nul", "score": "1-2", "etoiles": 3},
+    {"ligue": "Eredivisie", "heure": "19:00", "domicile": "NEC", "exterieur": "Fortuna Sittard", "pari": "Victoire NEC", "score": "2-1", "etoiles": 2},
+    {"ligue": "Eredivisie", "heure": "19:00", "domicile": "Twente", "exterieur": "Utrecht", "pari": "Victoire Twente", "score": "2-0", "etoiles": 4}
   ]
 }
