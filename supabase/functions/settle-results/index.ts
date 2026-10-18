@@ -1,6 +1,6 @@
 // ZoneWinner: règlement automatique prudent des pronostics.
  // Déployer comme Supabase Edge Function "settle-results".
- // Secrets requis: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, API_FOOTBALL_KEY, ZONEWINNER_CRON_SECRET.
+ // Secrets requis: PROJECT_URL, PROJECT_SERVICE_ROLE_KEY, API_FOOTBALL_KEY, ZONEWINNER_CRON_SECRET.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
@@ -66,8 +66,8 @@ Deno.serve(async (req) => {
     return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
   }
 
-  const supabaseUrl = Deno.env.get("SUPABASE_URL");
-  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  const supabaseUrl = Deno.env.get("PROJECT_URL");
+  const serviceKey = Deno.env.get("PROJECT_SERVICE_ROLE_KEY");
   const apiKey = Deno.env.get("API_FOOTBALL_KEY");
   if (!supabaseUrl || !serviceKey || !apiKey) {
     return new Response(JSON.stringify({ error: "Missing server secrets" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
