@@ -119,9 +119,10 @@ label{display:block;font-weight:650;margin:14px 0 6px}input{width:100%;border:1p
         });
         if (!result.error) message('Si cette adresse correspond à un compte, un e-mail de réinitialisation sera envoyé.');
       }
-      if (result && result.error) message('Impossible de terminer cette action. Vérifie les informations et réessaie.');
-    } catch (_) {
-      message('Une erreur est survenue. Réessaie dans quelques instants.');
+      if (result && result.error) { console.error('ZoneWinner auth error:', result.error.message); message('Erreur Supabase : ' + (result.error.message || 'action refusée') + '. Réessaie après vérification.'); }
+    } catch (err) {
+      console.error('ZoneWinner auth exception:', err && err.message ? err.message : err);
+      message('Erreur technique : ' + (err && err.message ? err.message : 'requête impossible') + '. Réessaie dans quelques instants.');
     } finally {
       resetCaptcha();
       submit.disabled = false;
