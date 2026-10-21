@@ -1,8 +1,11 @@
-{
-  "date": "2026-10-19",
-  "fuseau": "WAT",
-  "picks": [
-    {"ligue": "La Liga", "heure": "20:00", "domicile": "Getafe", "exterieur": "Rayo Vallecano", "pari": "Rayo ou nul", "score": "1-1", "etoiles": 2},
-    {"ligue": "Liga Portugal", "heure": "20:15", "domicile": "Braga", "exterieur": "Gil Vicente", "pari": "Victoire Braga", "score": "2-0", "etoiles": 3}
-  ]
-}
+[
+  {"ligue": "Ligue des Champions", "heure": "17:45", "domicile": "Como", "exterieur": "Manchester United", "pari": "Match nul", "score": "1-1", "etoiles": 1},
+  {"ligue": "Ligue des Champions", "heure": "17:45", "domicile": "Lille", "exterieur": "Galatasaray", "pari": "Lille ou nul", "score": "2-1", "etoiles": 1},
+  {"ligue": "Ligue des Champions", "heure": "20:00", "domicile": "Aston Villa", "exterieur": "Viking", "pari": "Aston Villa gagne", "score": "3-0", "etoiles": 3},
+  {"ligue": "Ligue des Champions", "heure": "20:00", "domicile": "Club Bruges", "exterieur": "Lens", "pari": "Club Bruges gagne", "score": "2-1", "etoiles": 1},
+  {"ligue": "Ligue des Champions", "heure": "20:00", "domicile": "Bayern Munich", "exterieur": "Arsenal", "pari": "Bayern ou nul", "score": "2-1", "etoiles": 2},
+  {"ligue": "Ligue des Champions", "heure": "20:00", "domicile": "Inter Milan", "exterieur": "Shakhtar Donetsk", "pari": "Inter gagne", "score": "3-0", "etoiles": 3},
+  {"ligue": "Ligue des Champions", "heure": "20:00", "domicile": "Real Madrid", "exterieur": "RB Leipzig", "pari": "Real Madrid gagne", "score": "3-1", "etoiles": 3},
+  {"ligue": "Ligue des Champions", "heure": "20:00", "domicile": "Real Betis", "exterieur": "Feyenoord", "pari": "Betis gagne", "score": "2-1", "etoiles": 2},
+  {"ligue": "Ligue des Champions", "heure": "20:00", "domicile": "Sporting CP", "exterieur": "LASK Linz", "pari": "Sporting gagne", "score": "3-0", "etoiles": 3}
+]
